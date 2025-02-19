@@ -1,8 +1,17 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
+    #url: jdbc:h2:mem:testdb
+    #driver-class-name: org.h2.Driver
+    #username: sa
+    #password:
+    url: jdbc:mysql://localhost:3307/todolist_ai?serverTimezone=Asia/Seoul
+    username: myuser
+    password: kwater12!
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    #database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+        ddl-auto: update
+    show-sql: true
