@@ -7,11 +7,11 @@ spring:
     url: jdbc:mysql://localhost:3307/todolist_ai?serverTimezone=Asia/Seoul
     username: myuser
     password: kwater12!
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver # 데이터베이스 연결시 필요 드라이버 명시적으로 설정
 
   jpa:
     #database-platform: org.hibernate.dialect.H2Dialect
-    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database-platform: org.hibernate.dialect.MySQL8Dialect # mysql 문법을 사용하도록 설정하는 옵션
     hibernate:
         ddl-auto: update
     show-sql: true
