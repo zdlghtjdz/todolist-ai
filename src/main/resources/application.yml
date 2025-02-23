@@ -8,6 +8,10 @@ spring:
     username: myuser
     password: kwater12!
     driver-class-name: com.mysql.cj.jdbc.Driver # 데이터베이스 연결시 필요 드라이버 명시적으로 설정
+  security:
+    user:
+      name: admin
+      password: 1234
 
   jpa:
     #database-platform: org.hibernate.dialect.H2Dialect
