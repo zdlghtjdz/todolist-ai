@@ -3,6 +3,7 @@ package com.github.soh.todolist.todolist_ai.service;
 import com.github.soh.todolist.todolist_ai.domain.Task;
 import com.github.soh.todolist.todolist_ai.repository.TaskRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,6 +34,7 @@ public class TaskService {
      * @param task
      * @return
      */
+    @Transactional
     public Task createTask(Task task) {
         return taskRepository.save(task);
     }
@@ -43,6 +45,7 @@ public class TaskService {
      * @param updatedTask
      * @return
      */
+    @Transactional
     public Task updateTask(Long id, Task updatedTask) {
         Optional<Task> optionalTask = taskRepository.findById(id);
         if(optionalTask.isPresent()) {

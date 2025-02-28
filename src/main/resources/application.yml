@@ -18,6 +18,9 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect # mysql 문법을 사용하도록 설정하는 옵션
     hibernate:
         ddl-auto: update
+        type:
+          descriptor:
+              sql: trace
     show-sql: true
     properties:
       hibernate:
