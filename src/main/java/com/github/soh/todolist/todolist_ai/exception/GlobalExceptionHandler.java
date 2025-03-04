@@ -13,7 +13,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestControllerAdvice
 public class GlobalExceptionHandler {
 
     // 400 Bad Request (잘못된 요청) - 데이터 유효성 문제
