@@ -2,6 +2,7 @@ package com.github.soh.todolist.todolist_ai.service;
 
 import com.github.soh.todolist.todolist_ai.domain.Task;
 import com.github.soh.todolist.todolist_ai.repository.TaskRepository;
+import io.swagger.v3.oas.models.info.Info;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,6 +30,7 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
+    public Task getTaskById(Long id) { return taskRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 ID의 Task가 없습니다.")); }
     /**
      *  새로운 할 일 추가
      * @param task

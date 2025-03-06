@@ -19,7 +19,7 @@ public class GlobalExceptionHandler {
     // 400 Bad Request (잘못된 요청) - 데이터 유효성 문제
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Map<String, Object>> handleBadRequest(IllegalArgumentException ex) {
-        return buildErrorResponse(HttpStatus.BAD_REQUEST, ex.getMessage());
+        return buildErrorResponse(HttpStatus.BAD_REQUEST, "잘못된 요청입니다.");
     }
 
     // 404 Not Found (존재하지 않는 리소스)
