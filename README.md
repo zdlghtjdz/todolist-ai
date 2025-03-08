@@ -14,3 +14,6 @@ TODO AI 서비스는 사용자의 할 일을 관리하고,
  - Backend : Spring Boot, JPA, MySQL (H2 for test)
  - Frontend : React (수정 가능)
  - AI 분석 : DeepSeek Model / ChatGPT api (예정)
+
+## 2025-03-08
+ - Feature branch 에서 기능 분리하여 작업하는 테스트
