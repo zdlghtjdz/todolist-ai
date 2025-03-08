@@ -1,6 +1,7 @@
 package com.github.soh.todolist.todolist_ai.service;
 
 import com.github.soh.todolist.todolist_ai.domain.Task;
+import com.github.soh.todolist.todolist_ai.exception.ResourceNotFoundException;
 import com.github.soh.todolist.todolist_ai.repository.TaskRepository;
 import io.swagger.v3.oas.models.info.Info;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,14 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
-    public Task getTaskById(Long id) { return taskRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 ID의 Task가 없습니다.")); }
+    public Task getTaskById(Long id) {
+        //return taskRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 ID의 Task가 없습니다."));
+
+        if (id < 0) {
+            throw new IllegalArgumentException("잘못된 요청입니다.");
+        }
+        return taskRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("해당 ID의 Task가 없습니다."));
+    }
     /**
      *  새로운 할 일 추가
      * @param task
