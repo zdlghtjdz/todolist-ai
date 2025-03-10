@@ -62,9 +62,8 @@ public class GlobalExceptionHandlerTest {
     // 400 필수 파라미터 누락
     @Test
     @WithMockUser(username= "testUser", roles = {"USER"})
-    public void sholdReturn400WhenRequiredParameterIsMissing() throws Exception {
+    public void shouldReturn400WhenRequiredParameterIsMissing() throws Exception {
         mockMvc.perform(get("/tasks/"));
     }
 
-    // 500 Internal Server Error(예상치 못한 서버 오류)
 }
