@@ -55,8 +55,9 @@ public class TaskService {
      * @return
      */
     @Transactional
-    public Task createTask(Task task) {
-        return taskRepository.save(task);
+    public TaskDTO createTask(Task task) {
+        Task createdTask = taskRepository.save(task);
+        return new TaskDTO(createdTask.getId(), createdTask.getTitle(), createdTask.getDescription(), createdTask.getStatus(), createdTask.getDueDate());
     }
 
     /**
@@ -66,7 +67,7 @@ public class TaskService {
      * @return
      */
     @Transactional
-    public Task updateTask(Long id, Task updatedTask) {
+    public TaskDTO updateTask(Long id, Task updatedTask) {
         Optional<Task> optionalTask = taskRepository.findById(id);
         if(optionalTask.isPresent()) {
             Task task = optionalTask.get();
@@ -74,7 +75,8 @@ public class TaskService {
             task.setDescription(updatedTask.getDescription());
             task.setStatus(updatedTask.getStatus());
             task.setDueDate(updatedTask.getDueDate());
-            return taskRepository.save(task);
+            Task updatedAfterTask = taskRepository.save(task);
+            return new TaskDTO(updatedAfterTask.getId(), updatedAfterTask.getTitle(), updatedAfterTask.getDescription(), updatedAfterTask.getStatus(), updatedAfterTask.getDueDate());
         }
         return null;
     }

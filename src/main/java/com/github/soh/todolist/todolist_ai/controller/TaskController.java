@@ -26,12 +26,12 @@ public class TaskController {
     public TaskDTO getTaskById(@PathVariable Long id) {return taskService.getTaskById(id); }
 
     @PostMapping
-    public Task createTask(@RequestBody Task task) {
+    public TaskDTO createTask(@RequestBody Task task) {
         return taskService.createTask(task);
     }
 
     @PutMapping("/{id}")
-    public Task updateTask(@PathVariable Long id, @RequestBody Task task) {
+    public TaskDTO updateTask(@PathVariable Long id, @RequestBody Task task) {
         return taskService.updateTask(id, task);
     }
 
