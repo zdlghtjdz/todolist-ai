@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Where;
 
 import java.time.LocalDateTime;
 
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
+@Where(clause = "is_deleted = false")
 public class Task {
 
     @Id
@@ -22,6 +24,9 @@ public class Task {
 
     @Enumerated(EnumType.STRING) // ENUM 타입을 String으로 저장함.
     private TaskStatus status; // 상태
+
+    @Column(name = "is_deleted", nullable = false)
+    private boolean isDeleted = false;
 
     private LocalDateTime dueDate; // 마감일
     private LocalDateTime createdAt = LocalDateTime.now(); // 생성 시간

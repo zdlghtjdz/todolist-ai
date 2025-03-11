@@ -1,6 +1,7 @@
 package com.github.soh.todolist.todolist_ai.controller;
 
 import com.github.soh.todolist.todolist_ai.domain.Task;
+import com.github.soh.todolist.todolist_ai.dto.TaskDTO;
 import com.github.soh.todolist.todolist_ai.service.TaskService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,12 +18,12 @@ public class TaskController {
     }
 
     @GetMapping
-    public List<Task> getTasks() {
+    public List<TaskDTO> getTasks() {
         return taskService.getAllTasks();
     }
 
     @GetMapping("/{id}")
-    public Task getTaskById(@PathVariable Long id) {return taskService.getTaskById(id); }
+    public TaskDTO getTaskById(@PathVariable Long id) {return taskService.getTaskById(id); }
 
     @PostMapping
     public Task createTask(@RequestBody Task task) {
