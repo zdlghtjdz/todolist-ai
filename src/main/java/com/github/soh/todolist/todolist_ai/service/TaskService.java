@@ -4,6 +4,7 @@ import com.github.soh.todolist.todolist_ai.domain.Task;
 import com.github.soh.todolist.todolist_ai.dto.TaskDTO;
 import com.github.soh.todolist.todolist_ai.exception.ResourceNotFoundException;
 import com.github.soh.todolist.todolist_ai.repository.TaskRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -51,7 +52,7 @@ public class TaskService {
     }
 
     public TaskDTO getDeletedTaskById(Long id) {
-        Task task = taskRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("해당 ID의 Task가 없습니다."));
+        Task task = taskRepository.findByIdIncludingDeleted(id).orElseThrow(() -> new ResourceNotFoundException("해당 ID의 Task가 없습니다."));
 
         return new TaskDTO(task.getId(), task.getTitle(), task.getTitle(), task.getStatus(), task.getDueDate());
     }
@@ -61,7 +62,6 @@ public class TaskService {
      * @param task
      * @return
      */
-    @Transactional
     public TaskDTO createTask(Task task) {
         Task createdTask = taskRepository.save(task);
         return new TaskDTO(createdTask.getId(), createdTask.getTitle(), createdTask.getDescription(), createdTask.getStatus(), createdTask.getDueDate());
@@ -73,7 +73,6 @@ public class TaskService {
      * @param updatedTask
      * @return
      */
-    @Transactional
     public TaskDTO updateTask(Long id, Task updatedTask) {
         Optional<Task> optionalTask = taskRepository.findById(id);
         if(optionalTask.isPresent()) {

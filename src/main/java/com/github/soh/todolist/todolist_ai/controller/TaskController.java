@@ -25,8 +25,8 @@ public class TaskController {
     @GetMapping("/{id}")
     public TaskDTO getTaskById(@PathVariable Long id) {return taskService.getTaskById(id); }
 
-    @GetMapping("/{id}")
-    public TaskDTO getDeletedTaskById(@PathVariable Long id, @RequestParam boolean isDeleted) {
+    @GetMapping("/deleted/{id}")
+    public TaskDTO getDeletedTaskById(@PathVariable Long id) {
         return taskService.getDeletedTaskById(id);
     }
     @PostMapping
