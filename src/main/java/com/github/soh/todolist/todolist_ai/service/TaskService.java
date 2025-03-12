@@ -49,6 +49,13 @@ public class TaskService {
         return new TaskDTO(task.getId(), task.getTitle(), task.getTitle(), task.getStatus(), task.getDueDate());
 
     }
+
+    public TaskDTO getDeletedTaskById(Long id) {
+        Task task = taskRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("해당 ID의 Task가 없습니다."));
+
+        return new TaskDTO(task.getId(), task.getTitle(), task.getTitle(), task.getStatus(), task.getDueDate());
+    }
+
     /**
      *  새로운 할 일 추가
      * @param task
