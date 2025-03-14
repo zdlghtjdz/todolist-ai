@@ -2,6 +2,7 @@ package com.github.soh.todolist.todolist_ai.service;
 
 import com.github.soh.todolist.todolist_ai.domain.Task;
 import com.github.soh.todolist.todolist_ai.dto.TaskDTO;
+import com.github.soh.todolist.todolist_ai.dto.TaskProjection;
 import com.github.soh.todolist.todolist_ai.exception.ResourceNotFoundException;
 import com.github.soh.todolist.todolist_ai.repository.TaskRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -29,11 +30,16 @@ public class TaskService {
      *  모든 할일 목록 조회
      * @return
      */
-    public List<TaskDTO> getAllTasks() {
+    public List<TaskProjection> getAllTasks() {
 
         //return taskRepository.findAll();
+        /*
         List<Task> tasks = taskRepository.findAll();
         return tasks.stream().map(task -> new TaskDTO(task.getId(), task.getTitle(), task.getDescription(), task.getStatus(), task.getDueDate())).collect(Collectors.toList());
+        */
+        // 20250314 projection 적용
+        return taskRepository.findBy();
+
     }
 
     public TaskDTO getTaskById(Long id) {

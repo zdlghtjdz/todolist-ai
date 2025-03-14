@@ -2,6 +2,7 @@ package com.github.soh.todolist.todolist_ai.controller;
 
 import com.github.soh.todolist.todolist_ai.domain.Task;
 import com.github.soh.todolist.todolist_ai.dto.TaskDTO;
+import com.github.soh.todolist.todolist_ai.dto.TaskProjection;
 import com.github.soh.todolist.todolist_ai.service.TaskService;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class TaskController {
     }
 
     @GetMapping
-    public List<TaskDTO> getTasks() {
+    public List<TaskProjection> getTasks() {
         return taskService.getAllTasks();
     }
 
