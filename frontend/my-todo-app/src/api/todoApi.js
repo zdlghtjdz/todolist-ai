@@ -32,9 +32,10 @@ export const fetchTodos = async () => {
 };
 
 export const fetchTodo = async (taskId) => {
-  const response = await fecth(`${API_BASE_URL}/tasks/` + taskId);
+  const response = await fetch(`${API_BASE_URL}/tasks/` + taskId);
+  console.log(response);
   if (!response.ok) {
     throw new Error("Failed to fetch task");
   }
-  return response.json;
+  return response.json();
 };

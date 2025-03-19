@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { fetchTodos, addTodo, deleteTodo } from "../api/todoAPi";
+import { fetchTodos, addTodo } from "../api/todoAPi";
 
 const TodoList = () => {
   const [tasks, setTasks] = useState([]);
@@ -39,6 +39,7 @@ const TodoList = () => {
       ) : (
         <p>할 일이 없습니다.</p>
       )}
+      <button onClick={handleAddTask}>신규</button>
     </div>
   );
 };
