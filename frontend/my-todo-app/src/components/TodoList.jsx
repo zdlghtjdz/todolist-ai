@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { fetchTodos, addTodo, deleteTodo } from "../api/todoAPi";
 
 const TodoList = () => {
@@ -27,13 +28,17 @@ const TodoList = () => {
   return (
     <div>
       <h2> 할 일 목록 </h2>
-      <input
-        type="text"
-        value={newTaskTitle}
-        onChange={(e) => setNewTaskTitle(e.target.value)}
-        placeholder="할 일을 입력하세요"
-      />
-      <button onClick={handleAddTask}>추가</button>
+      {tasks.length > 0 ? (
+        <ul>
+          {tasks.map((task) => (
+            <li key={task.id}>
+              <Link to={`/todo/${task.id}`}>{task.title}</Link>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>할 일이 없습니다.</p>
+      )}
     </div>
   );
 };

@@ -1,6 +1,8 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchTodos, deleteTodo } from "./api/todoAPi";
 import TodoList from "./components/TodoList";
+import TodoDetail from "./components/TodoDetail";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -23,20 +25,15 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>To-Do List</h1>
-      <ul>
-        {tasks.map((task) => (
-          <>
-            <li key={task.id}>
-              {task.title} - {task.status}
-              <button onClick={handleDelete()}>삭제</button>
-            </li>
-          </>
-        ))}
-      </ul>
-      <TodoList />
-    </div>
+    <Router>
+      <div>
+        <h1>To-Do List</h1>
+        <Routes>
+          <Route path="/" element={<TodoList />} />
+          <Route path="/todo/:id" element={<TodoDetail />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
