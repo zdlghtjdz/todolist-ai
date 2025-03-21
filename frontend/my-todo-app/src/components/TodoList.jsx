@@ -39,7 +39,9 @@ const TodoList = () => {
       ) : (
         <p>할 일이 없습니다.</p>
       )}
-      <button onClick={handleAddTask}>신규</button>
+      <button>
+        <Link to={`/todo/new`}>새로운 할 일 추가</Link>
+      </button>
     </div>
   );
 };

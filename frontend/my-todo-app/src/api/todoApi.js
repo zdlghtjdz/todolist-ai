@@ -10,6 +10,8 @@ export const addTodo = async (newTask) => {
 
   if (!response.ok) {
     throw new Error("할 일 추가에 실패했습니다.");
+  } else {
+    alert("할 일이 추가되었습니다.");
   }
 
   return response.json();

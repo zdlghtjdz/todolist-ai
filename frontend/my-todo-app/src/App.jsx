@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchTodos, deleteTodo } from "./api/todoAPi";
 import TodoList from "./components/TodoList";
 import TodoDetail from "./components/TodoDetail";
+import TodoAdd from "./components/TodoAdd";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -16,14 +17,6 @@ function App() {
       .catch((error) => console.error("Error fetching tasks.", error));
   }, []);
 
-  const handleDelete = async function () {
-    try {
-      await deleteTodo(task.id);
-    } catch (error) {
-      console.error("Error fetching tasks.", error);
-    }
-  };
-
   return (
     <Router>
       <div>
@@ -31,6 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<TodoList />} />
           <Route path="/todo/:id" element={<TodoDetail />} />
+          <Route path="/todo/new" element={<TodoAdd />} />
         </Routes>
       </div>
     </Router>
