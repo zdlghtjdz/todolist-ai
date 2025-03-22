@@ -4,26 +4,12 @@ import { fetchTodos, addTodo } from "../api/todoAPi";
 
 const TodoList = () => {
   const [tasks, setTasks] = useState([]);
-  const [newTaskTitle, setNewTaskTitle] = useState("");
 
   useEffect(() => {
     fetchTodos()
       .then(setTasks)
       .catch((error) => console.error("Error : ", error));
   }, []);
-
-  const handleAddTask = async () => {
-    if (!newTaskTitle.trim()) return;
-    const newTask = {
-      title: newTaskTitle,
-      description: "",
-      status: "PENDING",
-      dueDate: null,
-    };
-    const addedTask = await addTodo(newTask);
-    setTasks([...tasks, addedTask]);
-    setNewTaskTitle("");
-  };
 
   return (
     <div>
