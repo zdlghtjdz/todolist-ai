@@ -7,6 +7,10 @@ const TodoAdd = () => {
   const [description, setDescription] = useState("");
   const navigate = useNavigate();
 
+  const handleNavigateBack = () => {
+    navigate("/");
+  };
+
   const handleAddTask = async () => {
     console.log(title);
     if (!title.trim()) return;
@@ -26,6 +30,7 @@ const TodoAdd = () => {
 
   return (
     <div>
+      <button onClick={handleNavigateBack}>뒤로 가기</button>
       <p>새로운 할 일</p>
       <p>제목</p>
       <input

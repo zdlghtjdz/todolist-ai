@@ -7,6 +7,10 @@ const TodoDetail = () => {
   const [task, setTask] = useState([]);
   const navigate = useNavigate();
 
+  const navigateBack = () => {
+    navigate("/");
+  };
+
   const handleDeleteTask = async () => {
     try {
       await deleteTodo(task.id);
@@ -27,6 +31,7 @@ const TodoDetail = () => {
 
   return (
     <div>
+      <button onClick={navigateBack}>뒤로가기</button>
       <h2>할 일 상세 페이지</h2>
       {task ? (
         <div>
